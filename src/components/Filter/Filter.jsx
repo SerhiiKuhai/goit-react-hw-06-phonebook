@@ -1,13 +1,13 @@
-import React, { useRef } from 'react';
+import React from 'react';
 // import PropTypes from 'prop-types';
 import { LabelContact } from 'components/Form/Label.styled';
 import { InputContact } from 'components/Form/Input.styled';
 
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 export function Filter({ value, onChange }) {
-  const contactPhone = useSelector(getContactPhone);
-  console.log(contactPhone);
+  // const contactPhone = useSelector(getContactPhone);
+  // console.log(contactPhone);
 
   return (
     <LabelContact htmlFor="inputName">
