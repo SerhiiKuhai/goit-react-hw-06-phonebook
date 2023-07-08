@@ -1,9 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useRef } from 'react';
+// import PropTypes from 'prop-types';
 import { LabelContact } from 'components/Form/Label.styled';
 import { InputContact } from 'components/Form/Input.styled';
 
+import { useSelector } from 'react-redux';
+
 export function Filter({ value, onChange }) {
+  const contactPhone = useSelector(getContactPhone);
+  console.log(contactPhone);
+
   return (
     <LabelContact htmlFor="inputName">
       Find contacts by name
@@ -12,7 +17,7 @@ export function Filter({ value, onChange }) {
   );
 }
 
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
+// Filter.propTypes = {
+//   value: PropTypes.string.isRequired,
+//   onChange: PropTypes.func.isRequired,
+// };

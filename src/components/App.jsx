@@ -1,64 +1,68 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 import { ContactForm } from 'components/ContactForm/ContactForm';
-import { Filter } from 'components/Filter/Filter';
+// import { Filter } from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Container } from 'components/App.styled';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 
-const keyContacts = 'contacts';
+// import { useSelector } from 'react-redux';
+// import { getContactPhone } from '../redux/phonebook/selectors';
+
+// const keyContacts = 'contacts';
 
 export function App() {
-  const [contacts, setContacts] = useState(
-    () => JSON.parse(localStorage.getItem(keyContacts)) ?? []
-  );
-  const [filter, setFilter] = useState('');
+  // const contactPhone = useSelector(getContactPhone);
+  // console.log(contactPhone);
 
-  useEffect(() => {
-    localStorage.setItem(keyContacts, JSON.stringify(contacts));
-  }, [contacts]);
+  // const [contacts, setContacts] = useState(
+  //   () => JSON.parse(localStorage.getItem(keyContacts)) ?? []
+  // );
 
-  const deleteTodo = todoId => {
-    setContacts(prevContacts =>
-      prevContacts.filter(contact => contact.id !== todoId)
-    );
-  };
+  // const [filter, setFilter] = useState('');
 
-  const formSubmitHandler = (name, number) => {
-    if (
-      contacts.find(
-        contact => contact.name.toLowerCase() === name.toLowerCase()
-      )
-    ) {
-      alert(`${name} is already in contacts`);
-      return;
-    }
+  // useEffect(() => {
+  //   localStorage.setItem(keyContacts, JSON.stringify(contacts));
+  // }, [contacts]);
 
-    const contact = { name, number, id: nanoid() };
-    setContacts(prevContacts => [contact, ...prevContacts]);
-  };
+  // const deleteTodo = todoId => {
+  //   setContacts(prevContacts =>
+  //     prevContacts.filter(contact => contact.id !== todoId)
+  //   );
+  // };
 
-  const changeFilter = e => {
-    setFilter(e.currentTarget.value);
-  };
+  // const formSubmitHandler = (name, number) => {
+  //   if (
+  //     contacts.find(
+  //       contact => contact.name.toLowerCase() === name.toLowerCase()
+  //     )
+  //   ) {
+  //     alert(`${name} is already in contacts`);
+  //     return;
+  //   }
 
-  const getFiltredContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
-  };
+  //   const contact = { name, number, id: nanoid() };
+  //   setContacts(prevContacts => [contact, ...prevContacts]);
+  // };
+
+  // const changeFilter = e => {
+  //   setFilter(e.currentTarget.value);
+  // };
+
+  // const getFiltredContacts = () => {
+  //   const normalizedFilter = filter.toLowerCase();
+  //   return contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(normalizedFilter)
+  //   );
+  // };
 
   return (
     <Container>
       <h1>Phonebook</h1>
-      <ContactForm onSubmit={formSubmitHandler} />
+      <ContactForm />
 
       <h2>Contacts</h2>
-      <Filter value={filter} onChange={changeFilter} />
-      <ContactList
-        filtredContacts={getFiltredContacts()}
-        onDeleteTodo={deleteTodo}
-      />
+      {/* <Filter value={filter} onChange={changeFilter} /> */}
+      <ContactList />
     </Container>
   );
 }
