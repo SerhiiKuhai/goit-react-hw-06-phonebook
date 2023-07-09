@@ -1,21 +1,16 @@
-// import React, { useState } from 'react';
 import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { nanoid } from 'nanoid';
+import { addContact } from 'redux/phonebook/slice';
+
 import { Button } from 'components/Button/Button.styled';
 import { FormContact } from 'components/Form/Form.styled';
 import { InputContact } from 'components/Form/Input.styled';
 import { LabelContact } from 'components/Form/Label.styled';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { getContactPhone } from 'redux/phonebook/selectors';
-
-import { nanoid } from 'nanoid';
-import { addContact } from 'redux/phonebook/actions';
-
 export function ContactForm() {
-  const contactPhone = useSelector(getContactPhone);
-  console.log(contactPhone);
-  const contactNameRef = useRef();
-  const contactNumberRef = useRef();
+  const contactNameRef = useRef(null);
+  const contactNumberRef = useRef(null);
 
   const dispatch = useDispatch();
 
@@ -24,10 +19,13 @@ export function ContactForm() {
     const contactName = contactNameRef.current.value;
     const contactNumber = contactNumberRef.current.value;
     const contactId = nanoid();
-    console.log({ contactId, contactName, contactNumber });
+
     dispatch(
       addContact({ id: contactId, name: contactName, number: contactNumber })
     );
+
+    contactNameRef.current.value = null;
+    contactNumberRef.current.value = null;
   };
 
   return (
@@ -42,8 +40,6 @@ export function ContactForm() {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
           id="inputName"
-          // value={name}
-          // onChange={handleChange}
         />
         <LabelContact htmlFor="inputNumber">Number</LabelContact>
         <InputContact
@@ -54,8 +50,6 @@ export function ContactForm() {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           id="inputNumber"
-          // value={number}
-          // onChange={handleChange}
         />
         <Button type="submit">Add contact</Button>
       </FormContact>

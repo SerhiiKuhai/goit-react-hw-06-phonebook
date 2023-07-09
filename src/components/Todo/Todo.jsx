@@ -4,7 +4,7 @@ import { Button } from 'components/Button/Button.styled';
 import { GridItem } from 'components/Grid/Grid.styled';
 
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/phonebook/actions';
+import { deleteContact } from 'redux/phonebook/slice';
 
 // import { getContactPhone } from '../redux/phonebook/selectors';
 

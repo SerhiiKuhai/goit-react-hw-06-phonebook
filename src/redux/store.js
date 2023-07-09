@@ -1,7 +1,8 @@
-import { createStore } from 'redux';
-import { devToolsEnhancer } from '@redux-devtools/extension';
-import appReducers from './reducers';
+import { contactsReducer } from './phonebook/slice';
+import { configureStore } from '@reduxjs/toolkit';
 
-const enhancer = devToolsEnhancer();
-
-export const store = createStore(appReducers, enhancer);
+export const store = configureStore({
+  reducer: {
+    contacts: contactsReducer,
+  },
+});
