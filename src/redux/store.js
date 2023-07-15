@@ -1,4 +1,5 @@
 import { contactsReducer } from './phonebook/slice';
+import { filtersContactReducer } from './filtersContac/slice';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
 import {
@@ -15,11 +16,13 @@ import storage from 'redux-persist/lib/storage';
 
 const rootReduser = combineReducers({
   contacts: contactsReducer,
+  filtersContact: filtersContactReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['filtersContact'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReduser);

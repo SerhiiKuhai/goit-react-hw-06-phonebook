@@ -1,23 +1,32 @@
-import React from 'react';
-// import PropTypes from 'prop-types';
+import React, { useRef } from 'react';
+
+import { useDispatch } from 'react-redux';
+import { addFiltersContact } from 'redux/filtersContac/slice';
 import { LabelContact } from 'components/Form/Label.styled';
 import { InputContact } from 'components/Form/Input.styled';
 
-// import { useSelector } from 'react-redux';
+export function Filter() {
+  const contactFilterRef = useRef();
 
-export function Filter({ value, onChange }) {
-  // const contactPhone = useSelector(getContactPhone);
-  // console.log(contactPhone);
+  const dispatch = useDispatch();
+
+  const getFiltredContacts = () => {
+    const filterContact = contactFilterRef.current.value;
+    const normalizedFilter = filterContact.toLowerCase();
+
+    console.log('normalizedFilter', normalizedFilter);
+
+    return dispatch(addFiltersContact( normalizedFilter));
+  };
 
   return (
     <LabelContact htmlFor="inputName">
       Find contacts by name
-      <InputContact type="text" value={value} onChange={onChange} />
+      <InputContact
+        ref={contactFilterRef}
+        type="text"
+        onChange={getFiltredContacts}
+      />
     </LabelContact>
   );
 }
-
-// Filter.propTypes = {
-//   value: PropTypes.string.isRequired,
-//   onChange: PropTypes.func.isRequired,
-// };

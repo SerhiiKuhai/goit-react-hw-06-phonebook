@@ -1,6 +1,6 @@
 // import React, { useState, useEffect } from 'react';
 import { ContactForm } from 'components/ContactForm/ContactForm';
-// import { Filter } from 'components/Filter/Filter';
+import { Filter } from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Container } from 'components/App.styled';
 // import { nanoid } from 'nanoid';
@@ -61,7 +61,7 @@ export function App() {
       <ContactForm />
 
       <h2>Contacts</h2>
-      {/* <Filter value={filter} onChange={changeFilter} /> */}
+      <Filter />
       <ContactList />
     </Container>
   );

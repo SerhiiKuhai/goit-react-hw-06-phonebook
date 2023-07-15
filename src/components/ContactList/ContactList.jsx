@@ -5,11 +5,16 @@ import { Grid } from 'components/Grid/Grid.styled';
 import { useSelector } from 'react-redux';
 
 export function ContactList() {
-  const contactPhone = useSelector(state => state.contacts);
-
+  const contacts = useSelector(state => state.contacts);
+  const filtersContactPhone = useSelector(state => state.filtersContact);
+  
+  const filters = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filtersContactPhone)
+  );
+  console.log('2filters', filters);
   return (
     <Grid>
-      {contactPhone.map(contact => (
+      {filters.map(contact => (
         <Todo
           key={contact.id}
           id={contact.id}
