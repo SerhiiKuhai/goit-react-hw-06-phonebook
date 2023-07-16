@@ -6,18 +6,12 @@ import { LabelContact } from 'components/Form/Label.styled';
 import { InputContact } from 'components/Form/Input.styled';
 
 export function Filter() {
-  const contactFilterRef = useRef();
-
   const dispatch = useDispatch();
-
-  const getFiltredContacts = () => {
-    const filterContact = contactFilterRef.current.value;
-    const normalizedFilter = filterContact.toLowerCase();
-
-    console.log('normalizedFilter', normalizedFilter);
-
-    return dispatch(addFiltersContact( normalizedFilter));
-  };
+  const contactFilterRef = useRef();
+  console.log('contactFilterRef', contactFilterRef);
+  console.log('contactFilterRef', contactFilterRef);
+  const getFiltredContacts = () =>
+    dispatch(addFiltersContact(contactFilterRef.current.value));
 
   return (
     <LabelContact htmlFor="inputName">

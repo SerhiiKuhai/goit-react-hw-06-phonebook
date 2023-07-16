@@ -5,12 +5,10 @@ const filtersContactSlice = createSlice({
   initialState: '',
   reducer: {
     addFiltersContact(state, action) {
-
       return action.payload;
     },
   },
 });
 
-export const addFiltersContact = filtersContactSlice.actions.addFiltersContact;
-
+export const { addFiltersContact } = filtersContactSlice.actions;
 export const filtersContactReducer = filtersContactSlice.reducer;
