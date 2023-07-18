@@ -1,17 +1,17 @@
 import React, { useRef } from 'react';
 
 import { useDispatch } from 'react-redux';
-import { addFiltersContact } from 'redux/filtersContac/slice';
+import { addFiltersContact } from '../../redux/filtersContac/slice';
+// import { addFiltersContact } from 'redux/filtersContac/slice';
 import { LabelContact } from 'components/Form/Label.styled';
 import { InputContact } from 'components/Form/Input.styled';
 
 export function Filter() {
   const dispatch = useDispatch();
   const contactFilterRef = useRef();
-  console.log('contactFilterRef', contactFilterRef);
-  console.log('contactFilterRef', contactFilterRef);
+
   const getFiltredContacts = () =>
-    dispatch(addFiltersContact(contactFilterRef.current.value));
+    dispatch(addFiltersContact(`${contactFilterRef.current.value}`));
 
   return (
     <LabelContact htmlFor="inputName">

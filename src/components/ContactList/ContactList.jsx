@@ -6,7 +6,9 @@ import { useSelector } from 'react-redux';
 
 export function ContactList() {
   const contacts = useSelector(state => state.contacts);
-  const filterContact = useSelector(state => state.filtersContact);
+  const filterContact = useSelector(
+    state => state.filtersContact.filtersContact
+  );
   console.log('2contacts', contacts);
   console.log('2filterContact', filterContact);
 
