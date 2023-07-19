@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 
 import { useDispatch } from 'react-redux';
 import { addFiltersContact } from '../../redux/filtersContac/slice';
-// import { addFiltersContact } from 'redux/filtersContac/slice';
 import { LabelContact } from 'components/Form/Label.styled';
 import { InputContact } from 'components/Form/Input.styled';
 

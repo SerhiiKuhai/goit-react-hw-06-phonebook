@@ -6,17 +6,13 @@ import { useSelector } from 'react-redux';
 
 export function ContactList() {
   const contacts = useSelector(state => state.contacts);
-  const filterContact = useSelector(
-    state => state.filtersContact.filtersContact
-  );
-  console.log('2contacts', contacts);
-  console.log('2filterContact', filterContact);
+  const filterContact = useSelector(state => state.filtersContact);
 
   const normalizedFilter = filterContact.toLowerCase();
   const filters = contacts.filter(contact =>
     contact.name.toLowerCase().includes(normalizedFilter)
   );
-  console.log('2filters', filters);
+
   return (
     <Grid>
       {filters.map(contact => (
